@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hack Admin Panel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      color: green;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .terminal {
+      width: 80%;
+      margin: 20px auto;
+      background-color: #111;
+      color: green;
+      padding: 20px;
+      border: 2px solid green;
+      text-align: left;
+      font-size: 14px;
+      overflow: auto;
+      height: 300px;
+    }
+
+    .terminal input {
+      width: 100%;
+      padding: 10px;
+      background-color: black;
+      color: green;
+      border: 1px solid green;
+      font-family: monospace;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: green;
+      color: black;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: lime;
+    }
+  </style>
+</head>
+<body>
+  <h1>HACK ADMIN PANEL</h1>
+  <p>Nhập lệnh vào terminal để hack hệ thống:</p>
+
+  <div class="terminal" id="terminal">
+    <p>Đang kết nối đến hệ thống...</p>
+    <p>[OK] Đã kết nối đến Admin Panel.</p>
+    <p>[OK] Đang lấy dữ liệu người dùng...</p>
+  </div>
+
+  <input type="text" id="command" placeholder="Nhập lệnh tại đây...">
+  <button onclick="runCommand()">Chạy lệnh</button>
+
+  <script>
+    function runCommand() {
+      const terminal = document.getElementById('terminal');
+      const command = document.getElementById('command').value;
+
+      if (command.trim() === '') {
+        terminal.innerHTML += '<p>[ERROR] Lệnh không hợp lệ!</p>';
+      } else {
+        terminal.innerHTML += `<p>Chạy lệnh: <b>${command}</b>...</p>`;
+        terminal.innerHTML += '<p>[SUCCESS] Lệnh đã được thực thi!</p>';
+      }
+      terminal.scrollTop = terminal.scrollHeight; // Cuộn xuống dòng cuối
+      document.getElementById('command').value = ''; // Xóa input
+    }
+  </script>
+</body>
+</html>
